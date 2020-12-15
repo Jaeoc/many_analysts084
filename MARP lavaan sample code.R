@@ -52,7 +52,8 @@ summary(fit_cfa, fit.measures=T, rsquare=T, standardized = T)
 
 #Strucural Equation Model
 #Total effect
-m_sem_total <- 'rel =~ rel_1 + rel_2 + rel_3 + rel_4 + rel_5 + rel_6 + rel_7 + rel_8 + rel_9
+m_sem_direct <- '
+                rel =~ rel_1 + rel_2 + rel_3 + rel_4 + rel_5 + rel_6 + rel_7 + rel_8 + rel_9
 
                 wb_gen =~ gen_1 + gen_2
                 wb_phys =~ phys_1 + phys_2 + phys_3 + phys_4 + phys_5 + phys_6 + phys_7
@@ -62,16 +63,23 @@ m_sem_total <- 'rel =~ rel_1 + rel_2 + rel_3 + rel_4 + rel_5 + rel_6 + rel_7 + r
       
                 cnorm =~ cnorm_1 + cnorm_2
       
-                wb ~ rel'
+                wb ~ rel + 
+                     age + gender_d1 + gender_d2 + 
+                     education_d1 + education_d2 + education_d3 + education_d4 + education_d5 + education_d6 +
+                     ses + minority + gdp +
+                     sample_type_d1 + sample_type_d2 + sample_type_d3 +
+                     compensation_d1 + compensation_d2 + compensation_d3 + compensation_d4
+                ' 
 
-fit_sem_total <- sem(m_sem_total, data=df)
-summary(fit_sem_total, fit.measures=T, rsquare=T, standardized = T)
+fit_sem_direct <- sem(m_sem_direct, data=df)
+summary(fit_sem_direct, fit.measures=T, rsquare=T, standardized = T)
 
 #Interaction effect
 df <- data.frame(df, predict(fit_cfa))
 df$rel_cnorm <- df$rel * df$cnorm
 
-m_sem_int <- 'rel =~ rel_1 + rel_2 + rel_3 + rel_4 + rel_5 + rel_6 + rel_7 + rel_8 + rel_9
+m_sem_int <- '
+                rel =~ rel_1 + rel_2 + rel_3 + rel_4 + rel_5 + rel_6 + rel_7 + rel_8 + rel_9
 
                 wb_gen =~ gen_1 + gen_2
                 wb_phys =~ phys_1 + phys_2 + phys_3 + phys_4 + phys_5 + phys_6 + phys_7
@@ -81,8 +89,14 @@ m_sem_int <- 'rel =~ rel_1 + rel_2 + rel_3 + rel_4 + rel_5 + rel_6 + rel_7 + rel
       
                 cnorm =~ cnorm_1 + cnorm_2
       
-                wb ~ rel + cnorm + rel_cnorm'
+                wb ~ rel + cnorm + rel_cnorm + 
+                     age + gender_d1 + gender_d2 + 
+                     education_d1 + education_d2 + education_d3 + education_d4 + education_d5 + education_d6 +
+                     ses + minority + gdp +
+                     sample_type_d1 + sample_type_d2 + sample_type_d3 +
+                     compensation_d1 + compensation_d2 + compensation_d3 + compensation_d4
+              ' 
+
 
 fit_sem_int <- sem(m_sem_int, data=df)
 summary(fit_sem_int, fit.measures=T, rsquare=T, standardized = T)
-
