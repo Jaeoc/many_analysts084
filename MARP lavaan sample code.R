@@ -15,15 +15,14 @@
 
 #k variables = 47
 n=1000
-df <- as.data.frame(matrix(NA, nrow=n, ncol=47))
+df <- as.data.frame(matrix(NA, nrow=n, ncol=42))
 colnames(df) <- c('rel_1', 'rel_2', 'rel_3', 'rel_4', 'rel_5', 'rel_6', 'rel_7', 'rel_8', 'rel_9', 
                   'gen_1', 'gen_2',
                   'phys_1', 'phys_2', 'phys_3', 'phys_4', 'phys_5', 'phys_6', 'phys_7', 
                   'psych_1', 'psych_2', 'psych_3', 'psych_4', 'psych_5', 'psych_6', 
                   'soc_1', 'soc_2', 
                   'cnorm_1', 'cnorm_2', 
-                  'age', 'gender_d1', 'gender_d2', 
-                  'education_d1', 'education_d2', 'education_d3', 'education_d4', 'education_d5', 'education_d6', 
+                  'age', 'gender_d1', 'gender_d2', 'education',  
                   'ses', 'minority', 'gdp', 
                   'sample_type_d1', 'sample_type_d2', 'sample_type_d3', 
                   'compensation_d1', 'compensation_d2', 'compensation_d3', 'compensation_d4')
@@ -65,7 +64,7 @@ m_sem_direct <- '
       
                 wb ~ rel + 
                      age + gender_d1 + gender_d2 + 
-                     education_d1 + education_d2 + education_d3 + education_d4 + education_d5 + education_d6 +
+                     education + 
                      ses + minority + gdp +
                      sample_type_d1 + sample_type_d2 + sample_type_d3 +
                      compensation_d1 + compensation_d2 + compensation_d3 + compensation_d4
@@ -91,7 +90,7 @@ m_sem_int <- '
       
                 wb ~ rel + cnorm + rel_cnorm + 
                      age + gender_d1 + gender_d2 + 
-                     education_d1 + education_d2 + education_d3 + education_d4 + education_d5 + education_d6 +
+                     education +
                      ses + minority + gdp +
                      sample_type_d1 + sample_type_d2 + sample_type_d3 +
                      compensation_d1 + compensation_d2 + compensation_d3 + compensation_d4
@@ -100,3 +99,4 @@ m_sem_int <- '
 
 fit_sem_int <- sem(m_sem_int, data=df)
 summary(fit_sem_int, fit.measures=T, rsquare=T, standardized = T)
+
