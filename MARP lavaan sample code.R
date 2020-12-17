@@ -47,7 +47,7 @@ m_cfa <- 'rel =~ rel_1 + rel_2 + rel_3 + rel_4 + rel_5 + rel_6 + rel_7 + rel_8 +
             wb_soc ~~ 1*wb_soc
             wb_gen ~~ 1*wb_gen'
 
-fit_cfa <- cfa(m_cfa, data = df)
+fit_cfa <- cfa(m_cfa, data = df, orthogonal = T)
 summary(fit_cfa, fit.measures=T, rsquare=T, standardized = T)
 
 
