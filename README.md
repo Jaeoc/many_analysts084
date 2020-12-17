@@ -2,6 +2,8 @@
 
 This github repo is to keep track of our code in development and keep a link to the google doc where we are setting up the pre-registration.
 
+- Meeting notes/agenda: https://docs.google.com/document/d/1f_qfRVO2McWOiuYfS0EK0ze1lPuQJrNeIC0kjI9_i_E/edit?usp=sharing
+
 - Pre-registration: https://docs.google.com/document/d/1c8fCBKE1MxKmU0_R8XLFpYaRRZbcIHciH39KwhIPIZk/edit?usp=sharing
 
 - Link to official team 084 OSF page: https://osf.io/zx7mr/
