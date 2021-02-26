@@ -76,6 +76,7 @@ dat_sim <- cbind(dat_sim, country_dummies) #add dummies to rest of dataframe
 df <- read.csv('MARP_data.csv', header=T)
 names(df)
 
+df <- df[df$attention_check == 1,] #1 = passed
 #Alternative way to create dummies: https://stackoverflow.com/questions/11952706/generate-a-dummy-variable
 
 #dummies
